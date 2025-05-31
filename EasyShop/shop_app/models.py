@@ -5,7 +5,12 @@ from django.utils.text import slugify
 class Product(models.Model):
 	CATEGORY = (("Groceries", "GROCERIES"), 
 			("Clothings", "CLOTHINGS"),
-			("Electronics", "ELECTRONICS")
+			("Electronics", "ELECTRONICS"),
+			("Books", "BOOKS"),
+			("Furniture", "FURNITURE"),
+			("Sports", "SPORTS"),
+			("Beauty", "BEAUTY"),
+			("Health", "HEALTH"),
 			)
 	name = models.CharField(max_length=100)
 	slug = models.SlugField(blank=True, null=True)
