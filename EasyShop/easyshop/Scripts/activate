@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\Rishita Tehlan\Desktop\EasyShop\easyshop"
+VIRTUAL_ENV="C:\Users\Rishita Tehlan\Desktop\E-commerce\E-commerce\EasyShop\App\easyshop"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
