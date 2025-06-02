@@ -1,18 +1,20 @@
 import React from 'react'
+import HomeCard from './HomeCard'
 
-const CardContainer = () => {
+const CardContainer = ({products = []}) => {
   return (
     <section className="py-5" id="shop">
-        <h4 style={{textAlign: 'center'}}>Our Amazing Products!!</h4>
-        <div className="container px-4 px-lg-5 mt-5">
-            <div className="row justify-content-center">
-                <HomeCard />
-                <HomeCard />
-                <HomeCard />
+      <div className="container">
+        <h4 className="text-center mb-4">Our Amazing Products!!</h4>
+        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+          {Array.isArray(products) && products.map((product) => (
+            <div className="col" key={product.id}>
+              <HomeCard product={product} />
             </div>
+          ))}
         </div>
+      </div>
     </section>
-
   )
 }
 

@@ -1,25 +1,60 @@
+import { API_BASE_URL } from '../../services/api'
 import styles from './HomeCard.module.css'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
-const HomeCard = ({ style }) => {
+const HomeCard = ({ product }) => {
+  const [showModal, setShowModal] = useState(false)
+
+  // Convert the image URL to the correct format
+  const imageUrl = product.image
+    ? product.image.startsWith('http')
+      ? product.image
+      : `${API_BASE_URL}${product.image}`
+    : 'https://via.placeholder.com/150'
+
   return (
-    <div className={`col mb-3 ${style.col}`}>
-      <Link to="/detail" className={style.link}>
-        <div className={style.card}>
-          <div className={style.cardImgWrapper}>
+    <>
+      <div className="card h-100 shadow-sm">
+        <Link to={`/detail/${product.id}`} className={`${styles.link} text-decoration-none`}>
+          <div className={`${styles.cardImgWrapper} position-relative`}>
             <img
-              src=""
-              className={style.cardImgTop}
-              alt="Product Image"
+              src={imageUrl}
+              className="card-img-top"
+              alt={product.name}
+              onClick={(e) => {
+                e.preventDefault()
+                setShowModal(true)
+              }}
+              onError={(e) => {
+                e.target.src = 'https://via.placeholder.com/150'
+                e.target.onerror = null
+              }}
             />
           </div>
-          <div className={style.cardBody}>
-            <h5 className={`${style.cardTitle} mb-1`}>Product Name</h5>
-            <h6 className={style.cardText}>Rs. 1000</h6>
+          <div className="card-body text-center">
+            <h5 className="card-title text-dark mb-1">{product.name}</h5>
+            <p className="card-text text-primary fw-bold">Rs. {product.price}</p>
+          </div>
+        </Link>
+      </div>
+
+      {showModal && (
+        <div className={styles.modal} onClick={() => setShowModal(false)}>
+          <div className={styles.modalContent}>
+            <span className={styles.closeButton} onClick={() => setShowModal(false)}>
+              &times;
+            </span>
+            <img
+              src={imageUrl}
+              alt={product.name}
+              className={styles.modalImage}
+              onClick={(e) => e.stopPropagation()}
+            />
           </div>
         </div>
-      </Link>
-    </div>
+      )}
+    </>
   )
 }
 

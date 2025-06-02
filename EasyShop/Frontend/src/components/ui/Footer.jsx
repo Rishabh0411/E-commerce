@@ -4,7 +4,7 @@ import {FaInstagram} from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="py-3" style={{ backgroundColor: '#6050DC', color: 'white' }}>
+    <footer className="py-3" style={{ backgroundColor: '#540303', color: 'white' }}>
       <div className="container text-center">
         {/* Quick Links Section */}
         <div className="mb-2">
@@ -20,7 +20,7 @@ const Footer = () => {
 <a href="#" className="text-white mx-2"><FaInstagram /></a>
 </div>
 {/* Copyright Section */}
-<p className="small mb-0">&copy; 2024 Shoppit</p>
+<p className="small mb-0">&copy; 2025 EasyShop</p>
       </div>
     </footer>
   )
