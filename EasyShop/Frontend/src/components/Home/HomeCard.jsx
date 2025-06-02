@@ -8,7 +8,7 @@ const HomeCard = () => {
         <div className={styles.card}>
           <div className={styles.cardImgWrapper}>
             <img
-              src=""
+              src="https://via.placeholder.com/150"
               className={styles.cardImgTop}
               alt="Product Image"
             />
