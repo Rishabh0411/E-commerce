@@ -7,7 +7,7 @@ function NavBar() {
   return (
     <nav className={`navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3 ${styles.stickyNavBar}`}>
       <div className="container">
-        <Link className="navbar-brand fw-bold text-uppercase" to="/">SHOPPIT</Link>
+        <Link className="navbar-brand fw-bold text-uppercase" to="/">EasyShop</Link>
         <button
           className="navbar-toggler"
           type="button"
