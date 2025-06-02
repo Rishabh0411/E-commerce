@@ -4,7 +4,9 @@ import {FaInstagram} from 'react-icons/fa';
 
 const Footer = () => {
   return (
+    <footer className="py-3" style={{ backgroundColor: '#540303', color: 'white' }}>
     <footer className="py-3" style={{ backgroundColor: '#5e0505', color: 'white' }}>
+
       <div className="container text-center">
         {/* Quick Links Section */}
         <div className="mb-2">
