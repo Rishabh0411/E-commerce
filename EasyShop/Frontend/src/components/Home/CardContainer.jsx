@@ -1,5 +1,5 @@
 import React from 'react'
-
+import HomeCard from './HomeCard'
 const CardContainer = () => {
   return (
     <section className="py-5" id="shop">

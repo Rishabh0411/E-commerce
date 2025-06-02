@@ -1,21 +1,21 @@
 import styles from './HomeCard.module.css'
 import { Link } from 'react-router-dom'
 
-const HomeCard = ({ style }) => {
+const HomeCard = () => {
   return (
-    <div className={`col mb-3 ${style.col}`}>
-      <Link to="/detail" className={style.link}>
-        <div className={style.card}>
-          <div className={style.cardImgWrapper}>
+    <div className={`col mb-3 ${styles.col}`}>
+      <Link to="/detail" className={styles.link}>
+        <div className={styles.card}>
+          <div className={styles.cardImgWrapper}>
             <img
               src=""
-              className={style.cardImgTop}
+              className={styles.cardImgTop}
               alt="Product Image"
             />
           </div>
-          <div className={style.cardBody}>
-            <h5 className={`${style.cardTitle} mb-1`}>Product Name</h5>
-            <h6 className={style.cardText}>Rs. 1000</h6>
+          <div className={styles.cardBody}>
+            <h5 className={`${styles.cardTitle} mb-1`}>Product Name</h5>
+            <h6 className={styles.cardText}>Rs. 1000</h6>
           </div>
         </div>
       </Link>
