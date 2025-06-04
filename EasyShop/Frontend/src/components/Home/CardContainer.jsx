@@ -2,9 +2,7 @@ import React from 'react'
 import HomeCard from './HomeCard'
 
 const CardContainer = ({products = []}) => {
-
-const CardContainer = () => {
-
+  console.log("CardContainer rendered!")
   return (
     <section className="py-5" id="shop">
       <div className="container">
@@ -22,4 +20,3 @@ const CardContainer = () => {
 }
 
 export default CardContainer
-console.log("CardContainer rendered!");

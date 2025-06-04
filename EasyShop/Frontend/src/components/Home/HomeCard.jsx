@@ -51,21 +51,6 @@ const HomeCard = ({ product }) => {
               className={styles.modalImage}
               onClick={(e) => e.stopPropagation()}
             />
-const HomeCard = () => {
-  return (
-    <div className={`col mb-3 ${styles.col}`}>
-      <Link to="/detail" className={styles.link}>
-        <div className={styles.card}>
-          <div className={styles.cardImgWrapper}>
-            <img
-              src="https://via.placeholder.com/150"
-              className={styles.cardImgTop}
-              alt="Product Image"
-            />
-          </div>
-          <div className={styles.cardBody}>
-            <h5 className={`${styles.cardTitle} mb-1`}>Product Name</h5>
-            <h6 className={styles.cardText}>Rs. 1000</h6>
           </div>
         </div>
       )}
