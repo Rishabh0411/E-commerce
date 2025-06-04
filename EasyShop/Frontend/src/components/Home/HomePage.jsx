@@ -2,39 +2,54 @@ import CardContainer from './CardContainer'
 import Header from './Header'
 import { useEffect, useState } from 'react'
 import api from '../../services/api'
+import { ProductGridPlaceholder } from '../ui/ProductCardPlaceholder'
 import styles from './HomeCard.module.css'
 
 const HomePage = () => {
   const [products, setProducts] = useState([])
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [retrying, setRetrying] = useState(false)
+
+  const fetchProducts = async () => {
+    try {
+      setLoading(true)
+      setError(null)
+      const res = await api.get('/products/')
+      console.log('API Response:', res.data) // Debug log
+      setProducts(res.data)
+    } catch (err) {
+      console.error('Error details:', err)
+      setError(
+        err.response?.data?.message ||
+        err.message ||
+        'Failed to fetch products. Please try again.'
+      )
+    } finally {
+      setLoading(false)
+      setRetrying(false)
+    }
+  }
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        setLoading(true)
-        setError(null)
-        const res = await api.get('products/')
-        setProducts(res.data)
-      } catch (err) {
-        setError(err.message || 'Failed to fetch products')
-        console.error('Error fetching products:', err)
-      } finally {
-        setLoading(false)
-      }
-    }
-
     fetchProducts()
   }, [])
+
+  const handleRetry = () => {
+    setRetrying(true)
+    fetchProducts()
+  }
 
   if (loading) {
     return (
       <>
         <Header />
-        <div className={styles.loadingContainer}>
-          <div className={styles.loadingSpinner}></div>
-          <p>Loading products...</p>
-        </div>
+        <section className="py-5" id="shop">
+          <h4 style={{textAlign: 'center'}}>Our Amazing Products!!</h4>
+          <div className="container px-4 px-lg-5 mt-5">
+            <ProductGridPlaceholder count={8} />
+          </div>
+        </section>
       </>
     )
   }
@@ -43,15 +58,18 @@ const HomePage = () => {
     return (
       <>
         <Header />
-        <div className={styles.errorContainer}>
-          <h3>Oops! Something went wrong</h3>
-          <p>{error}</p>
-          <button 
-            className={styles.retryButton}
-            onClick={() => window.location.reload()}
-          >
-            Try Again
-          </button>
+        <div className="container py-5">
+          <div className="text-center">
+            <h3 className="text-danger mb-3">Oops! Something went wrong</h3>
+            <p className="text-muted mb-4">{error}</p>
+            <button 
+              className="btn btn-primary"
+              onClick={handleRetry}
+              disabled={retrying}
+            >
+              {retrying ? 'Retrying...' : 'Try Again'}
+            </button>
+          </div>
         </div>
       </>
     )
@@ -64,7 +82,5 @@ const HomePage = () => {
     </>
   )
 }
-
-console.log("HomePage rendered!");
 
 export default HomePage
